@@ -51,3 +51,5 @@ package:
     requests:
      cpu: 10m
      memory: 50Mi
+  securityContext:
+    runAsUser: 1000
