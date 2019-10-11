@@ -60,5 +60,13 @@ spec:
         {{- if .Values.package.resources }}
         resources:
 {{ toYaml .Values.package.resources | indent 10 }}
-        {{- end}}
+        {{- end -}}
+        securityContext:
+          runAsUser: {{ .Values.package.securityContext.runAsUser }}
+        volumeMounts:
+        - name: tmpfs
+          mountPath: /tmp
+      volumes:
+      - name: tmpfs
+        emptyDir: {}
 {{- end -}}
